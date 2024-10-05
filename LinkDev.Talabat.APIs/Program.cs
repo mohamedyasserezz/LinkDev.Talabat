@@ -1,4 +1,4 @@
-
+using LinkDev.Talabat.Infrastructure.Persistence;
 namespace LinkDev.Talabat.APIs
 {
     public class Program
@@ -16,7 +16,13 @@ namespace LinkDev.Talabat.APIs
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(); 
+            builder.Services.AddSwaggerGen();
+
+            // builder.Services.AddDbContext<StoreContext>(optionsBuilder =>
+            // {
+            //     optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("StoreContext"));
+            // });
+             builder.Services.AddPersistanceServices(builder.Configuration);
             #endregion
 
             var app = builder.Build();
