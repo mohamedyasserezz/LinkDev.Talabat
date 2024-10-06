@@ -1,3 +1,4 @@
+using LinkDev.Talabat.APIs.Extentions;
 using LinkDev.Talabat.Infrastructure.Persistence;
 using LinkDev.Talabat.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
@@ -29,35 +30,9 @@ namespace LinkDev.Talabat.APIs
 
             var app = builder.Build();
 
-            
-            #region Update Database
-            using var scope = app.Services.CreateAsyncScope();
-            var Services = scope.ServiceProvider;
-            var storeContext = Services.GetRequiredService<StoreContext>();
-
-            var loggerFactory = Services.GetRequiredService<ILoggerFactory>();
-
-            try
-            {
-                var PendingMigrations = await storeContext.Database.GetPendingMigrationsAsync();
-
-                if (PendingMigrations.Any())
-                    await storeContext.Database.MigrateAsync();
-                
-                await storeContext.SeedAsync();
-
-            }
-            catch (Exception ex)
-            {
-                var logger = loggerFactory.CreateLogger<Program>();
-                logger.LogError(ex, "an erroe have been occured while applying migrations or data seeding");
-            }
-            finally
-            {
-                // scope.Dispose();
-                await storeContext.DisposeAsync();
-            }
-
+            #region Databases Initialization
+         
+            await app.InitializeStoreContextAsync();
             #endregion
              
             #region Configure Kestrel Middlewares

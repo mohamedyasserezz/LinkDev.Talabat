@@ -9,6 +9,7 @@ public static class DependencyInjection
         {
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("StoreContext"));
         });
+        services.AddScoped<IStoreContextInitializer, StoreContextInitializer>();
         return services;
     }
 }

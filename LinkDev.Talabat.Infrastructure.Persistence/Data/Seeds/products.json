@@ -1,6 +1,6 @@
 [
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Double Caramel Frappuccino",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 200,
@@ -11,7 +11,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "White Chocolate Mocha Frappuccino",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
     "Price": 150,
@@ -22,7 +22,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Iced Cafe Latte",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 180,
@@ -33,7 +33,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "White Chocolate Mocha",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 300,
@@ -44,7 +44,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Iced Caramel Macchiato",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 250,
@@ -55,7 +55,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Hot Caramel Macchiato",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
     "Price": 120,
@@ -66,7 +66,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Iced Matcha Latte",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 10,
@@ -77,7 +77,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Honey Cake",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 8,
@@ -88,7 +88,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Blueberry Cheesecake",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 15,
@@ -99,7 +99,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Glazed Donuts",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
     "Price": 18,
@@ -110,7 +110,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Greek Salad",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 15,
@@ -121,7 +121,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Iced Black Tea Lemonade",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
     "Price": 16,
@@ -132,7 +132,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Iced London Fog Tea Latte",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 14,
@@ -143,7 +143,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Turkey Bacon, Cheddar & Egg White Sandwich",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 250,
@@ -154,7 +154,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Iced Matcha",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 189.99,
@@ -165,7 +165,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Double-Smoked Bacon, Cheddar & Egg Sandwich",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 199.99,
@@ -176,7 +176,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Iced Chai Tea Latte with Oleato Golden Foam",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
     "Price": 150,
@@ -187,7 +187,7 @@
     "LastModifiedBy": "1"
   },
   {
-    "Id": "0",
+    "Id": 0,
     "Name": "Dragon Drink® Starbucks Refreshers® Beverage with Oleato Golden Foam",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 180,
