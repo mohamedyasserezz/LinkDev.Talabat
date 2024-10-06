@@ -17,10 +17,7 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories
                 await _storeContext.Set<TEntity>().AsNoTracking().ToListAsync();
 
 
-        public async Task<TEntity?> GetAsync(TKey id)
-        {
-            await _storeContext.Set<TEntity>().FindAsync(id);
-        }
+        public async Task<TEntity?> GetAsync(TKey id) => await _storeContext.Set<TEntity>().FindAsync(id);
 
 
 
