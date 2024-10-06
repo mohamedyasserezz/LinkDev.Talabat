@@ -43,11 +43,14 @@ namespace LinkDev.Talabat.APIs
 
                 if (PendingMigrations.Any())
                     await storeContext.Database.MigrateAsync();
+                
+                await storeContext.SeedAsync();
+
             }
             catch (Exception ex)
             {
                 var logger = loggerFactory.CreateLogger<Program>();
-                logger.LogError(ex, ex.Message);
+                logger.LogError(ex, "an erroe have been occured while applying migrations or data seeding");
             }
             finally
             {
