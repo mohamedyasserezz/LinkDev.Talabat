@@ -1,4 +1,5 @@
-﻿using LinkDev.Talabat.Infrastructure.Persistence.Data;
+﻿using LinkDev.Talabat.Core.Domain.Contract;
+using LinkDev.Talabat.Infrastructure.Persistence.Data;
 
 namespace LinkDev.Talabat.APIs.Extentions
 {
@@ -8,7 +9,7 @@ namespace LinkDev.Talabat.APIs.Extentions
         {
             using var scope = app.Services.CreateAsyncScope();
             var Services = scope.ServiceProvider;
-            var storeContextInitializer = Services.GetRequiredService<StoreContextInitializer>();
+            var storeContextInitializer = Services.GetRequiredService<IStoreContextInitializer>();
 
             var loggerFactory = Services.GetRequiredService<ILoggerFactory>();
 
