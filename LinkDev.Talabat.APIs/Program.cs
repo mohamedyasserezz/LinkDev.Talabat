@@ -1,10 +1,13 @@
-
+using LinkDev.Talabat.APIs.Extentions;
+using LinkDev.Talabat.Infrastructure.Persistence;
+using LinkDev.Talabat.Infrastructure.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 namespace LinkDev.Talabat.APIs
 {
     public class Program
     {
         // Entry Point
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -16,11 +19,22 @@ namespace LinkDev.Talabat.APIs
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(); 
+            builder.Services.AddSwaggerGen();
+
+            // builder.Services.AddDbContext<StoreContext>(optionsBuilder =>
+            // {
+            //     optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("StoreContext"));
+            // });
+            builder.Services.AddPersistanceServices(builder.Configuration);
             #endregion
 
             var app = builder.Build();
 
+            #region Databases Initialization
+         
+            await app.InitializeStoreContextAsync();
+            #endregion
+             
             #region Configure Kestrel Middlewares
             // Configure the HTTP request pipeline.
 
@@ -34,7 +48,7 @@ namespace LinkDev.Talabat.APIs
 
 
 
-            app.MapControllers(); 
+            app.MapControllers();
             #endregion
 
             app.Run();
