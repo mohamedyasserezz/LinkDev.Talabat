@@ -14,6 +14,7 @@ public static class DependencyInjection
         });
         services.AddScoped<IStoreContextInitializer, StoreContextInitializer>();
         services.AddScoped(typeof(ISaveChangesInterceptor), typeof(CustomSavaChangesInterceptor));
+        services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork.UnitOfWork));
         return services;
     }
 }
