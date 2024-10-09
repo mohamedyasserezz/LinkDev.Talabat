@@ -1,4 +1,5 @@
-﻿using LinkDev.Talabat.Infrastructure.Persistence.Data.Interceptors;
+﻿using LinkDev.Talabat.Core.Domain.Contract.Persistance;
+using LinkDev.Talabat.Infrastructure.Persistence.Data.Interceptors;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence;

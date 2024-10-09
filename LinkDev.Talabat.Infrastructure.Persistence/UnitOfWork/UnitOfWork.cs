@@ -1,6 +1,7 @@
 ﻿
 using LinkDev.Talabat.Core.Domain.Common;
-using LinkDev.Talabat.Infrastructure.Persistence.Repositories;
+using LinkDev.Talabat.Core.Domain.Contract.Persistance;
+using LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Repository;
 using System.Collections.Concurrent;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.UnitOfWork
