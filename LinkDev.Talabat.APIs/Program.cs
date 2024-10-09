@@ -2,6 +2,7 @@ using LinkDev.Talabat.APIs.Extentions;
 using LinkDev.Talabat.APIs.Services;
 using LinkDev.Talabat.Core.Application.Abstraction;
 using LinkDev.Talabat.Infrastructure.Persistence;
+using LinkDev.Talabat.Core.Application;
 namespace LinkDev.Talabat.APIs
 {
     public class Program
@@ -28,7 +29,7 @@ namespace LinkDev.Talabat.APIs
             //     optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("StoreContext"));
             // });
             builder.Services.AddPersistanceServices(builder.Configuration);
-
+            builder.Services.AddApplicationServices();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped(typeof(ILoggedInUserService), typeof(LoggedInUserService));
             #endregion

@@ -10,7 +10,9 @@ public static class DependencyInjection
     {
         services.AddDbContext<StoreContext>(optionsBuilder =>
         {
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("StoreContext"));
+            optionsBuilder
+            .UseSqlServer(configuration.GetConnectionString("StoreContext"))
+            .UseLazyLoadingProxies();
         });
         services.AddScoped<IStoreContextInitializer, StoreContextInitializer>();
         services.AddScoped(typeof(ISaveChangesInterceptor), typeof(CustomSavaChangesInterceptor));

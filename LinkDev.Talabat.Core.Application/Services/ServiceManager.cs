@@ -16,7 +16,7 @@ namespace LinkDev.Talabat.Core.Application.Services
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly Lazy<IProductService> _productService;
-        public IProductService productService => _productService.Value;
+        public IProductService ProductService => _productService.Value;
 
         public ServiceManager(IUnitOfWork unitOfWork, IMapper mapper)
         {
