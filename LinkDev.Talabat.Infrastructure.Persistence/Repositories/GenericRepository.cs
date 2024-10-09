@@ -12,9 +12,26 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories
         where TKey : IEquatable<TKey>
     {
         public async Task<IEnumerable<TEntity>> GetAllAsync(bool withTracking = false)
-        => withTracking ?
+        {
+            if(typeof(TEntity)  == typeof(Product))
+            {
+                return withTracking ?
+                (IEnumerable<TEntity>)await _storeContext.Set<Product>()
+                .Include(P => P.Brand)
+                .Include(P => P.Category)
+                .ToListAsync() 
+                :
+                (IEnumerable<TEntity>)await _storeContext.Set<Product>()
+                .Include(P => P.Brand)
+                .Include(P => P.Category)
+                .AsNoTracking()
+                .ToListAsync();
+            }
+            
+            return withTracking?
                 await _storeContext.Set<TEntity>().ToListAsync() :
                 await _storeContext.Set<TEntity>().AsNoTracking().ToListAsync();
+        }
 
 
         public async Task<TEntity?> GetAsync(TKey id) => await _storeContext.Set<TEntity>().FindAsync(id);
