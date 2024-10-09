@@ -10,7 +10,7 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Reposi
 {
     internal class GenericRepository<TEntity, TKey>(StoreContext _storeContext) : IGenricRepository<TEntity, TKey>
           where TEntity : BaseEntity<TKey>
-        where TKey : IEquatable<TKey>
+          where TKey : IEquatable<TKey>
     {
         public async Task<IEnumerable<TEntity>> GetAllAsync(bool withTracking = false)
         {

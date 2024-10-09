@@ -3,17 +3,21 @@
 namespace LinkDev.Talabat.Core.Domain.Specifications.Produts
 {
     public class ProductWithBrandAndCategorySpecifications : BaseSpecification<Product, int>
-     
+
     {
-        public ProductWithBrandAndCategorySpecifications() : base() 
+        public ProductWithBrandAndCategorySpecifications() : base()
         {
-            Includes.Add(P => P.Category!);
-            Includes.Add(P => P.Brand!);
+            AddIncludes();
         }
         public ProductWithBrandAndCategorySpecifications(int id) : base(id)
+        {
+            AddIncludes();
+        }
+        void AddIncludes()
         {
             Includes.Add(P => P.Category!);
             Includes.Add(P => P.Brand!);
         }
     }
 }
+
