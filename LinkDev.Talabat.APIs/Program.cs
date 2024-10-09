@@ -14,7 +14,9 @@ namespace LinkDev.Talabat.APIs
             #region ConfigureServices
             // Add services to the container.
 
-            builder.Services.AddControllers(); // Register Required Services by Asp .Net Core Wep Apis to DI Container
+            builder.Services.
+                AddControllers()
+                .AddApplicationPart(typeof(Controllers.AssemblyInformation).Assembly); // Register Required Services by Asp .Net Core Wep Apis to DI Container
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
