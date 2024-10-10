@@ -26,12 +26,16 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Products
         public async Task<ActionResult<IEnumerable<BrandDto>>> GetBrandAsync()
         {
             var brands = await serviceManager.ProductService.GetBrandsAsync();
+            if (brands is null)
+                return NotFound();
             return Ok(brands);
         }
         [HttpGet("categories")]
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoriesAsync()
         {
             var categories = await serviceManager.ProductService.GetCategorysAsync();
+            if (categories is null)
+                return NotFound();
             return Ok(categories);
         }
     }
