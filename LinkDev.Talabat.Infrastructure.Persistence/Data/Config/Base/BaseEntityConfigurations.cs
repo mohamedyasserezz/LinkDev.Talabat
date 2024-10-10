@@ -1,5 +1,9 @@
 ﻿using LinkDev.Talabat.Core.Domain.Common;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Data.Config.Base
 {
@@ -11,21 +15,6 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Data.Config.Base
         {
             builder.Property(E => E.Id)
                .ValueGeneratedOnAdd();
-
-
-            builder.Property(E => E.CreatedBy)
-                .IsRequired();
-
-            builder.Property(E => E.CreatedOn)
-                .IsRequired()
-                /*.HasDefaultValueSql("GetUTCDate()")*/;
-
-            builder.Property(E => E.LastModifiedBy)
-                .IsRequired();
-
-            builder.Property(E => E.LastModifiedOn)
-               .IsRequired()
-               /*.HasDefaultValueSql("GetUTCDate()")*/;
         }
     }
 }

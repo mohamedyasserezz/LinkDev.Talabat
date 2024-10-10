@@ -1,6 +1,7 @@
 ﻿
 
 using System.Text.Json;
+using LinkDev.Talabat.Core.Domain.Contract.Persistance;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Data
 {

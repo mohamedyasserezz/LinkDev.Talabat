@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkDev.Talabat.Core.Domain.Contract
+namespace LinkDev.Talabat.Core.Domain.Contract.Persistance
 {
     public interface IUnitOfWork : IAsyncDisposable
     {

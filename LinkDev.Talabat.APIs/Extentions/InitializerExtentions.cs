@@ -1,4 +1,4 @@
-﻿using LinkDev.Talabat.Core.Domain.Contract;
+﻿using LinkDev.Talabat.Core.Domain.Contract.Persistance;
 using LinkDev.Talabat.Infrastructure.Persistence.Data;
 
 namespace LinkDev.Talabat.APIs.Extentions
