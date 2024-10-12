@@ -8,9 +8,9 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Products
     public class ProductsController(IServiceManager serviceManager) : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductToReturnDto>>> GetAllProductAsync()
+        public async Task<ActionResult<IEnumerable<ProductToReturnDto>>> GetAllProductAsync(string? sort)
         {
-            var products = await serviceManager.ProductService.GetAllProductsAsync();
+            var products = await serviceManager.ProductService.GetAllProductsAsync(sort);
             return Ok(products);
         }
         [HttpGet("{id:int}")]
