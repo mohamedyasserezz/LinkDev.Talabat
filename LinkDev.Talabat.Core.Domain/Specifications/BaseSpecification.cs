@@ -13,6 +13,11 @@ namespace LinkDev.Talabat.Core.Domain.Specifications
         public Expression<Func<TEntity,object>>? OrderByDesc { get; set; } = null;
         public BaseSpecification()
         {
+            
+        }
+        public BaseSpecification(Expression<Func<TEntity, bool>>? expression)
+        {
+            Criteria = expression;
         }
         public BaseSpecification(TKey id)
         {
