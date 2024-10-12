@@ -5,7 +5,7 @@ namespace LinkDev.Talabat.Core.Domain.Specifications.Produts
     public class ProductWithBrandAndCategorySpecifications : BaseSpecification<Product, int>
 
     {
-        public ProductWithBrandAndCategorySpecifications(string? sort, int? brandId, int? categorId) :
+        public ProductWithBrandAndCategorySpecifications(string? sort, int? brandId, int? categorId, int pageSize, int PageIndex) :
             base(
                 P =>
                 (!brandId.HasValue || brandId == P.BrandId)
@@ -14,9 +14,7 @@ namespace LinkDev.Talabat.Core.Domain.Specifications.Produts
                 )
         {
             AddIncludes();
-            AddOrderBy(P => P.Name);
-            if (!string.IsNullOrEmpty(sort))
-            {
+            
                 switch (sort)
                 {
                     case "nameDesc":
@@ -32,7 +30,8 @@ namespace LinkDev.Talabat.Core.Domain.Specifications.Produts
                         AddOrderBy(P => P.Name);
                         break;
                 }
-            }
+            
+            ApplyPagination(pageSize * (PageIndex - 1), pageSize);
         }
         public ProductWithBrandAndCategorySpecifications(int id) : base(id)
         {
