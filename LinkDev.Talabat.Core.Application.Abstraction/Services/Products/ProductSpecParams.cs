@@ -14,6 +14,14 @@ namespace LinkDev.Talabat.Core.Application.Abstraction.Services.Products
         public int? CategoryId { get; set; }
 
         public string? sort { get; set; }
+        private string? search;
+
+        public string? Search
+        {
+            get { return search; }
+            set { search = value?.ToUpper(); }
+        }
+
 
         public int PageIndex { get; set; } = 1;
         public int PageSize
