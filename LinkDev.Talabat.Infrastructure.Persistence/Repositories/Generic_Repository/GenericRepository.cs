@@ -49,7 +49,10 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Reposi
 
         public async Task<TEntity?> GetWithSpecAsync(ISpecifications<TEntity, TKey> specifications)
             => await ApplySpecification(specifications).FirstOrDefaultAsync();
-
+        public async Task<int> GetCountWithSpecAsync(ISpecifications<TEntity, TKey> specifications, bool withTracking = false)
+        {
+            return await ApplySpecification(specifications).CountAsync();
+        }
 
         public async Task AddAsync(TEntity entity)
         {
@@ -69,7 +72,9 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Reposi
         #region Helper
         private IQueryable<TEntity> ApplySpecification(ISpecifications<TEntity, TKey> specifications)
             => SpecificationEvaluator<TEntity, TKey>.GetQuery(_storeContext.Set<TEntity>(), specifications);
-        
+
+      
+
         #endregion
     }
 }
