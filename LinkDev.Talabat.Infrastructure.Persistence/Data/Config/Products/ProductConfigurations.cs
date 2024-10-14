@@ -11,6 +11,10 @@ internal class ProductConfigurations : BaseEntityConfigurations<Product, int>
             .HasMaxLength(100);
 
 
+        builder.Property(P => P.NormalizedName)
+            .IsRequired()
+            .HasMaxLength(100);
+
 
         builder.Property(P => P.Description)
             .IsRequired();
