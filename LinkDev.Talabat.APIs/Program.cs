@@ -17,6 +17,10 @@ namespace LinkDev.Talabat.APIs
 
             builder.Services.
                 AddControllers()
+                .ConfigureApiBehaviorOptions(opthions =>
+                {
+                    opthions.SuppressModelStateInvalidFilter = true;
+                })
                 .AddApplicationPart(typeof(Controllers.AssemblyInformation).Assembly); // Register Required Services by Asp .Net Core Wep Apis to DI Container
 
 
