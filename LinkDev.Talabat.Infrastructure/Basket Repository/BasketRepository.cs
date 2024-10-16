@@ -23,6 +23,6 @@ namespace LinkDev.Talabat.Infrastructure.Basket_Repository
                 return basket;
             return null;
         }
-        public Task<bool> DeleteAsync(string id) => _database.KeyDeleteAsync(id);
+        public async Task<bool> DeleteAsync(string id) => await _database.KeyDeleteAsync(id);
     }
 }

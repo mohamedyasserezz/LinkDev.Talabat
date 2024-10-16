@@ -40,6 +40,7 @@ namespace LinkDev.Talabat.APIs.Middlewares
                 {
                 }
                 #endregion
+
                 await HandleExceptionsAsync(context, ex);
 
             }
