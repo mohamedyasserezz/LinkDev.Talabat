@@ -1,10 +1,7 @@
 ﻿using LinkDev.Talabat.APIs.Controllers.Base;
-using LinkDev.Talabat.APIs.Controllers.Controllers.Errors;
-using LinkDev.Talabat.APIs.Controllers.Exceptions;
+using LinkDev.Talabat.APIs.Controllers.Errors;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 
 namespace LinkDev.Talabat.APIs.Controllers.Controllers.Buggy
 {
@@ -13,8 +10,8 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Buggy
         [HttpGet("notfound")]
         public IActionResult GetNotFound()
         {
-            throw new NotFoundException();
-            // return NotFound(new ApiResponse(404)); // 404
+            //throw new NotFoundException();
+            return NotFound(new ApiResponse(404)); // 404
         }
         [HttpGet("servererror")]
         public IActionResult GetServerError()
@@ -41,14 +38,14 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Buggy
         [HttpGet("badrequest/{id}")]
         public IActionResult GetValdiationError(int id) // => 400
         {
-            if (!ModelState.IsValid)
-            {
-                var errors = ModelState.Where(P => P.Value.Errors.Count > 0)
-                                           .SelectMany(P => P.Value.Errors)
-                                           .Select(P => P.ErrorMessage);
+            //if (!ModelState.IsValid)
+            //{
+            //    var errors = ModelState.Where(P => P.Value.Errors.Count > 0)
+            //                               .SelectMany(P => P.Value.Errors)
+            //                               .Select(P => P.ErrorMessage);
 
-                return BadRequest(new ApiValdiationErrorResponse() { Errors = errors }); 
-            }
+            //    return BadRequest(new ApiValdiationErrorResponse() { Errors = errors }); 
+            //}
             return Ok();
         }
 

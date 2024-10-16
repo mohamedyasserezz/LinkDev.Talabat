@@ -1,12 +1,11 @@
+using LinkDev.Talabat.APIs.Controllers.Errors;
 using LinkDev.Talabat.APIs.Extentions;
+using LinkDev.Talabat.APIs.Middlewares;
 using LinkDev.Talabat.APIs.Services;
+using LinkDev.Talabat.Core.Application;
 using LinkDev.Talabat.Core.Application.Abstraction;
 using LinkDev.Talabat.Infrastructure.Persistence;
-using LinkDev.Talabat.Core.Application;
-using Microsoft.AspNetCore.Http.HttpResults;
-using LinkDev.Talabat.APIs.Controllers.Controllers.Errors;
 using Microsoft.AspNetCore.Mvc;
-using LinkDev.Talabat.APIs.Middlewares;
 namespace LinkDev.Talabat.APIs
 {
     public class Program
@@ -27,8 +26,11 @@ namespace LinkDev.Talabat.APIs
                     opthions.InvalidModelStateResponseFactory = ((actionContext) =>
                     {
                         var errors = actionContext.ModelState.Where(P => P.Value!.Errors.Count > 0)
-                                          .SelectMany(P => P.Value!.Errors)
-                                          .Select(P => P.ErrorMessage);
+                                          .Select(P => new ApiValdiationErrorResponse.ValidationError()
+                                          {
+                                              Field = P.Key,
+                                              Errors = P.Value!.Errors.Select(E => E.ErrorMessage)
+                                          });
                         return new BadRequestObjectResult(new ApiValdiationErrorResponse() { Errors = errors });
                     });
                 })
