@@ -1,7 +1,10 @@
 ﻿using LinkDev.Talabat.APIs.Controllers.Base;
 using LinkDev.Talabat.APIs.Controllers.Controllers.Errors;
+using LinkDev.Talabat.APIs.Controllers.Exceptions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace LinkDev.Talabat.APIs.Controllers.Controllers.Buggy
 {
@@ -10,12 +13,25 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Buggy
         [HttpGet("notfound")]
         public IActionResult GetNotFound()
         {
-            return NotFound(new ApiResponse(404)); // 404
+            throw new NotFoundException();
+            // return NotFound(new ApiResponse(404)); // 404
         }
         [HttpGet("servererror")]
         public IActionResult GetServerError()
         {
-            throw new Exception(); // 500
+            /// try
+            /// {
+            ///     throw new Exception();
+            /// }
+            /// catch(Exception ex)
+            /// {
+            ///     var response = new ApiResponse(500);
+            ///     Response.WriteAsync(JsonSerializer.Serialize(response));
+            ///     return StatusCode(response.StatusCode);
+            /// }
+
+            throw new Exception();
+            
         }
         [HttpGet("badrequest")]
         public IActionResult GetBadRequest()

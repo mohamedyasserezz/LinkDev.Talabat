@@ -3,6 +3,10 @@ using LinkDev.Talabat.APIs.Services;
 using LinkDev.Talabat.Core.Application.Abstraction;
 using LinkDev.Talabat.Infrastructure.Persistence;
 using LinkDev.Talabat.Core.Application;
+using Microsoft.AspNetCore.Http.HttpResults;
+using LinkDev.Talabat.APIs.Controllers.Controllers.Errors;
+using Microsoft.AspNetCore.Mvc;
+using LinkDev.Talabat.APIs.Middlewares;
 namespace LinkDev.Talabat.APIs
 {
     public class Program
@@ -19,10 +23,28 @@ namespace LinkDev.Talabat.APIs
                 AddControllers()
                 .ConfigureApiBehaviorOptions(opthions =>
                 {
-                    opthions.SuppressModelStateInvalidFilter = true;
+                    opthions.SuppressModelStateInvalidFilter = false;
+                    opthions.InvalidModelStateResponseFactory = ((actionContext) =>
+                    {
+                        var errors = actionContext.ModelState.Where(P => P.Value!.Errors.Count > 0)
+                                          .SelectMany(P => P.Value!.Errors)
+                                          .Select(P => P.ErrorMessage);
+                        return new BadRequestObjectResult(new ApiValdiationErrorResponse() { Errors = errors });
+                    });
                 })
                 .AddApplicationPart(typeof(Controllers.AssemblyInformation).Assembly); // Register Required Services by Asp .Net Core Wep Apis to DI Container
 
+            //builder.Services.Configure<ApiBehaviorOptions>(opthions =>
+            //{
+            //    opthions.SuppressModelStateInvalidFilter = false;
+            //    opthions.InvalidModelStateResponseFactory = ((actionContext) =>
+            //    {
+            //        var errors = actionContext.ModelState.Where(P => P.Value!.Errors.Count > 0)
+            //                          .SelectMany(P => P.Value!.Errors)
+            //                          .Select(P => P.ErrorMessage);
+            //        return new BadRequestObjectResult(new ApiValdiationErrorResponse() { Errors = errors });
+            //    });
+            //});
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -44,10 +66,10 @@ namespace LinkDev.Talabat.APIs
          
             await app.InitializeStoreContextAsync();
             #endregion
-             
+
             #region Configure Kestrel Middlewares
             // Configure the HTTP request pipeline.
-
+            app.UseMiddleware<CustomExceptionHandlerMiddleware>();
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
