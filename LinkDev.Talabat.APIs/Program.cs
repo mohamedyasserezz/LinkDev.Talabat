@@ -17,7 +17,6 @@ namespace LinkDev.Talabat.APIs
 
             #region ConfigureServices
             // Add services to the container.
-
             builder.Services.
                 AddControllers()
                 .ConfigureApiBehaviorOptions(opthions =>
@@ -80,6 +79,7 @@ namespace LinkDev.Talabat.APIs
 
             app.UseHttpsRedirection();
 
+            //app.UseStatusCodePagesWithReExecute("/Errors/{0}");
             app.UseStatusCodePagesWithReExecute("/Errors/{0}");
 
             app.UseStaticFiles();
