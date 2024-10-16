@@ -1,5 +1,4 @@
-﻿
-using LinkDev.Talabat.APIs.Controllers.Controllers.Errors;
+﻿using LinkDev.Talabat.APIs.Controllers.Errors;
 using LinkDev.Talabat.APIs.Controllers.Exceptions;
 using System.Net;
 
@@ -27,6 +26,11 @@ namespace LinkDev.Talabat.APIs.Middlewares
                 await _next(context);
 
                 // response logic
+                //if(context.Response.StatusCode == (int)HttpStatusCode.NotFound)
+                //{
+                //    var response = new ApiResponse((int)HttpStatusCode.NotFound, $"the requested endpoint {context.Request.Path} is not found");
+                //    await context.Response.WriteAsync(response.ToString());
+                //}
             }
             catch (Exception ex)
             {
