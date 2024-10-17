@@ -1,12 +1,7 @@
 ﻿using LinkDev.Talabat.Core.Domain.Common;
 using LinkDev.Talabat.Core.Domain.Contract.Persistance;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Repository
+namespace LinkDev.Talabat.Infrastructure.Persistence.Generic_Repository
 {
     internal class GenericRepository<TEntity, TKey>(StoreContext _storeContext) : IGenricRepository<TEntity, TKey>
           where TEntity : BaseEntity<TKey>
@@ -73,7 +68,7 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Reposi
         private IQueryable<TEntity> ApplySpecification(ISpecifications<TEntity, TKey> specifications)
             => SpecificationEvaluator<TEntity, TKey>.GetQuery(_storeContext.Set<TEntity>(), specifications);
 
-      
+
 
         #endregion
     }
