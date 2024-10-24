@@ -8,9 +8,9 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly StoreContext _storeContext;
+        private readonly StoreDbContext _storeContext;
         private readonly ConcurrentDictionary<string, object> _repositories;
-        public UnitOfWork(StoreContext storeContext)
+        public UnitOfWork(StoreDbContext storeContext)
         {
             _storeContext = storeContext;
             

@@ -5,7 +5,7 @@ using LinkDev.Talabat.Core.Domain.Contract.Persistance;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Data
 {
-    public class StoreContextInitializer(StoreContext _storeContext) : IStoreContextInitializer
+    public class StoreDbInitializer(StoreDbContext _storeContext) : IStoreContextInitializer
     {
         public async Task InitializeAsync()
         {
