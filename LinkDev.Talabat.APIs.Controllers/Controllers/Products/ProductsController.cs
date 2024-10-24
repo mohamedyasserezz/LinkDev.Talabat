@@ -1,6 +1,6 @@
 ﻿using LinkDev.Talabat.APIs.Controllers.Base;
 using LinkDev.Talabat.Core.Application.Abstraction.Common;
-using LinkDev.Talabat.Core.Application.Abstraction.Models;
+using LinkDev.Talabat.Core.Application.Abstraction.Models.Product;
 using LinkDev.Talabat.Core.Application.Abstraction.Services;
 using LinkDev.Talabat.Core.Application.Abstraction.Services.Products;
 using Microsoft.AspNetCore.Mvc;
@@ -19,8 +19,8 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Products
         public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
         {
             var product = await serviceManager.ProductService.GetProductAsync(id);
-            if (product is null)
-                return NotFound(new { statusCode = 404, message = "NotFound." });
+            //if (product is null)
+            //    return NotFound(new { statusCode = 404, message = "NotFound." });
 
             return Ok(product);
         }

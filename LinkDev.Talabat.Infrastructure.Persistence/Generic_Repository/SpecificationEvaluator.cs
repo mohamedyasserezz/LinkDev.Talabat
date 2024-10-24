@@ -1,11 +1,6 @@
 ﻿using LinkDev.Talabat.Core.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Repository
+namespace LinkDev.Talabat.Infrastructure.Persistence.Generic_Repository
 {
     internal static class SpecificationEvaluator<TEntity, TKey>
         where TEntity : BaseEntity<TKey>
@@ -16,12 +11,12 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Reposi
             if (specifications.Criteria is not null)
                 query = query.Where(specifications.Criteria);
 
-            if(specifications.OrderByDesc is not null)
+            if (specifications.OrderByDesc is not null)
                 query = query.OrderByDescending(specifications.OrderByDesc);
-            else if(specifications.OrderBy is not null)
+            else if (specifications.OrderBy is not null)
                 query = query.OrderBy(specifications.OrderBy);
 
-            if(specifications.IsPaginationEnabled is true)
+            if (specifications.IsPaginationEnabled is true)
                 query = query.Skip(specifications.Skip).Take(specifications.Take);
 
             if (specifications.Includes is not null)

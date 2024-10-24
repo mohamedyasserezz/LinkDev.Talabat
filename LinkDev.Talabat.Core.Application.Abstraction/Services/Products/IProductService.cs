@@ -1,5 +1,5 @@
 ﻿using LinkDev.Talabat.Core.Application.Abstraction.Common;
-using LinkDev.Talabat.Core.Application.Abstraction.Models;
+using LinkDev.Talabat.Core.Application.Abstraction.Models.Product;
 
 namespace LinkDev.Talabat.Core.Application.Abstraction.Services.Products
 {
