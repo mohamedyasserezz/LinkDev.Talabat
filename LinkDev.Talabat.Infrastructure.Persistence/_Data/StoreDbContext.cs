@@ -1,4 +1,5 @@
 ﻿using LinkDev.Talabat.Core.Domain.Common;
+using LinkDev.Talabat.Infrastructure.Persistence.Common;
 using System.Reflection;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Data
@@ -16,7 +17,8 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Data
         {
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AssemblyInformation).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AssemblyInformation).Assembly,
+                type => type.GetCustomAttribute<DbContextTypeAttribute>()?.DbContextType == typeof(StoreDbContext));
         }
     }
 }

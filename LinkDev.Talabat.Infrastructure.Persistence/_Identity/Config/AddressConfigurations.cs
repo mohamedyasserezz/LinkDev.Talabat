@@ -1,7 +1,9 @@
 ﻿using LinkDev.Talabat.Core.Domain.Entities.Identity;
+using LinkDev.Talabat.Infrastructure.Persistence.Common;
 
-namespace LinkDev.Talabat.Infrastructure.Persistence._Identity.Config
+namespace LinkDev.Talabat.Infrastructure.Persistence.Identity.Config
 {
+    [DbContextType(typeof(StoreIdentityDbContext))]
     public class AddressConfigurations : IEntityTypeConfiguration<Address>
     {
         public void Configure(EntityTypeBuilder<Address> builder)
