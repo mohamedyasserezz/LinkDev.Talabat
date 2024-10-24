@@ -1,10 +1,5 @@
 ﻿using LinkDev.Talabat.Core.Domain.Common;
 using LinkDev.Talabat.Core.Domain.Contract.Persistance;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Repositories.Generic_Repository
 {
