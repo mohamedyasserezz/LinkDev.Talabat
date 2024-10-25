@@ -1,21 +1,16 @@
 ﻿
 
 using System.Text.Json;
-using LinkDev.Talabat.Core.Domain.Contract.Persistance;
+using LinkDev.Talabat.Core.Domain.Contract.Persistance.DbInitializer;
+using LinkDev.Talabat.Infrastructure.Persistence.Common;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Data
 {
-    public class StoreDbInitializer(StoreDbContext _storeContext) : IStoreContextInitializer
+    public class StoreDbInitializer(StoreDbContext _storeContext) : DbInitializer(_storeContext), IStoreDbInitializer
     {
-        public async Task InitializeAsync()
-        {
-            var PendingMigrations = await _storeContext.Database.GetPendingMigrationsAsync();
+       
 
-            if (PendingMigrations.Any())
-                await _storeContext.Database.MigrateAsync();
-        }
-
-        public async Task SeedAsync()
+        public override async Task SeedAsync()
         {
             if (!_storeContext.Brands.Any())
             {
