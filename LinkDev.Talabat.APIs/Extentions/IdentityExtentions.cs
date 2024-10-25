@@ -2,7 +2,10 @@
 using LinkDev.Talabat.Core.Application.Abstraction.Services.Auth;
 using LinkDev.Talabat.Core.Domain.Entities.Identity;
 using LinkDev.Talabat.Infrastructure.Persistence.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace LinkDev.Talabat.APIs.Extentions
 {
@@ -45,6 +48,29 @@ namespace LinkDev.Talabat.APIs.Extentions
             {
                 return () => servicesProvider.GetRequiredService<IAuthService>();
             });
+
+            //services.AddAuthentication();
+            //services.AddAuthentication("Hamada");
+            services.AddAuthentication(authenticationConfigureOptions =>
+            {
+                authenticationConfigureOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authenticationConfigureOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(configureOptions =>
+                {
+                    configureOptions.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidateLifetime = true,
+
+                        ClockSkew = TimeSpan.FromMinutes(0),
+                        ValidIssuer = configuration["JwtSettings:Issuer"],
+                        ValidAudience = configuration["JwtSettings:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]!)),
+                    };
+                });
 
             return services;
         }

@@ -3,10 +3,13 @@ using LinkDev.Talabat.Core.Application.Abstraction.Common;
 using LinkDev.Talabat.Core.Application.Abstraction.Models.Product;
 using LinkDev.Talabat.Core.Application.Abstraction.Services;
 using LinkDev.Talabat.Core.Application.Abstraction.Services.Products;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LinkDev.Talabat.APIs.Controllers.Controllers.Products
 {
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductsController(IServiceManager serviceManager) : BaseApiController
     {
         [HttpGet]

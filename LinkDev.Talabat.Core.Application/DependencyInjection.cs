@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using LinkDev.Talabat.Core.Application.Abstraction.Services;
+﻿using LinkDev.Talabat.Core.Application.Abstraction.Services;
 using LinkDev.Talabat.Core.Application.Abstraction.Services.Auth;
 using LinkDev.Talabat.Core.Application.Abstraction.Services.Basket;
 using LinkDev.Talabat.Core.Application.Abstraction.Services.Products;
@@ -8,8 +7,6 @@ using LinkDev.Talabat.Core.Application.Services;
 using LinkDev.Talabat.Core.Application.Services.Auth;
 using LinkDev.Talabat.Core.Application.Services.Basket;
 using LinkDev.Talabat.Core.Application.Services.Products;
-using LinkDev.Talabat.Core.Domain.Contract.Infrastructure;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LinkDev.Talabat.Core.Application

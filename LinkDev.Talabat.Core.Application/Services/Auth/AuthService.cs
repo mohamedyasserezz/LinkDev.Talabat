@@ -3,7 +3,6 @@ using LinkDev.Talabat.Core.Application.Abstraction.Services.Auth;
 using LinkDev.Talabat.Core.Application.Exceptions;
 using LinkDev.Talabat.Core.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
