@@ -1,4 +1,5 @@
-﻿using LinkDev.Talabat.Core.Application.Abstraction.Services.Auth;
+﻿using LinkDev.Talabat.Core.Application.Abstraction.Models.Auth;
+using LinkDev.Talabat.Core.Application.Abstraction.Services.Auth;
 using LinkDev.Talabat.Core.Domain.Entities.Identity;
 using LinkDev.Talabat.Infrastructure.Persistence.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -7,8 +8,10 @@ namespace LinkDev.Talabat.APIs.Extentions
 {
     public static class IdentityExtentions
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services)
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+
             //services.AddIdentity<ApplicationUser, IdentityRole>();
             services.AddIdentity<ApplicationUser, IdentityRole>(identityOptions =>
             {
