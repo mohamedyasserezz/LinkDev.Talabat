@@ -5,7 +5,7 @@ namespace LinkDev.Talabat.APIs.Extentions
 {
     public static class InitializerExtentions
     {
-        public static async Task<WebApplication> InitializeStoreContextAsync(this WebApplication app)
+        public static async Task<WebApplication> InitializeDbContextAsync(this WebApplication app)
         {
             using var scope = app.Services.CreateAsyncScope();
             var Services = scope.ServiceProvider;
@@ -19,6 +19,8 @@ namespace LinkDev.Talabat.APIs.Extentions
                 await storeContextInitializer.InitializeAsync();
                 await storeContextInitializer.SeedAsync();
 
+                await identityContextInitializer.InitializeAsync();
+                await identityContextInitializer.SeedAsync();
             }
             catch (Exception ex)
             {

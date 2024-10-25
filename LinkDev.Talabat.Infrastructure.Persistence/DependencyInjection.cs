@@ -5,6 +5,7 @@ using LinkDev.Talabat.Infrastructure.Persistence.Data.Interceptors;
 using LinkDev.Talabat.Infrastructure.Persistence.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using LinkDev.Talabat.Core.Domain.Entities.Identity;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence;
 
@@ -24,8 +25,6 @@ public static class DependencyInjection
         services.AddScoped(typeof(ISaveChangesInterceptor), typeof(CustomSavaChangesInterceptor)); 
         #endregion
 
-        services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork.UnitOfWork));
-
         #region IdentityDbContext
         services.AddDbContext<StoreIdentityDbContext>(optionsBuilder =>
         {
@@ -36,6 +35,10 @@ public static class DependencyInjection
 
         services.AddScoped(typeof(IStoreIdentityDbInitializer), typeof(StoreIdentityDbInitializer));
         #endregion
+
+        services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork.UnitOfWork));
+
+        services.AddIdentityCore<ApplicationUser>();
 
         return services;
     }
