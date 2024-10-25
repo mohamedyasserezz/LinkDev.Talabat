@@ -80,7 +80,7 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
             .Union(rolesClaims)
             .Union(userClaims);
 
-            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-256-bit-secret"));
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-very-secure-and-long-key-goes-here!"));
 
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
