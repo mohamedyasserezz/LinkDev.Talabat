@@ -56,7 +56,7 @@ namespace LinkDev.Talabat.Dashboard.Controllers
                 throw new NotFoundException(nameof(Product), id);
             if (ModelState.IsValid)
             {
-                if (productViewModel.Image is not null)
+                if (productViewModel.Image is not null && productViewModel.PictureUrl is not null)
                 {
                     PictureSettings.DeleteFile(productViewModel.PictureUrl, "products");
 
