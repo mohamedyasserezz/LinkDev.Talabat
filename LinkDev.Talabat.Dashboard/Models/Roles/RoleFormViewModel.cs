@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LinkDev.Talabat.Dashboard.Models
+namespace LinkDev.Talabat.Dashboard.Models.Roles
 {
     public class RoleFormViewModel
     {

@@ -1,5 +1,5 @@
 ﻿using LinkDev.Talabat.Core.Application.Exceptions;
-using LinkDev.Talabat.Dashboard.Models;
+using LinkDev.Talabat.Dashboard.Models.Roles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
