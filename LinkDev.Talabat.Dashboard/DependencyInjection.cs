@@ -1,9 +1,11 @@
-﻿using LinkDev.Talabat.Core.Domain.Entities.Identity;
+﻿using LinkDev.Talabat.Core.Domain.Contract.Persistance;
+using LinkDev.Talabat.Core.Domain.Entities.Identity;
+using LinkDev.Talabat.Dashboard.Mapping;
 using LinkDev.Talabat.Infrastructure.Persistence.Data;
 using LinkDev.Talabat.Infrastructure.Persistence.Identity;
+using LinkDev.Talabat.Infrastructure.Persistence.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using StackExchange.Redis;
 
 namespace LinkDev.Talabat.Dashboard
 {
@@ -54,6 +56,9 @@ namespace LinkDev.Talabat.Dashboard
                 //identityOptions.Tokens
             })
                .AddEntityFrameworkStores<StoreIdentityDbContext>();
+
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddAutoMapper(typeof(MapsProfile));
             return services;
         }
     }
