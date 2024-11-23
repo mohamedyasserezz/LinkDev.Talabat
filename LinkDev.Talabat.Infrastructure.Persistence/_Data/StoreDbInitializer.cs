@@ -2,6 +2,7 @@
 
 using System.Text.Json;
 using LinkDev.Talabat.Core.Domain.Contract.Persistance.DbInitializer;
+using LinkDev.Talabat.Core.Domain.Entities.Orders;
 using LinkDev.Talabat.Infrastructure.Persistence.Common;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Data
@@ -14,7 +15,7 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Data
         {
             if (!_storeContext.Brands.Any())
             {
-                var brandsFile = await File.ReadAllTextAsync("../LinkDev.Talabat.Infrastructure.Persistence/Data/Seeds/brands.json");
+                var brandsFile = await File.ReadAllTextAsync("../LinkDev.Talabat.Infrastructure.Persistence/_Data/Seeds/brands.json");
                 var Brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsFile);
                 if (Brands?.Count() > 0)
                 {
@@ -24,7 +25,7 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Data
             }
             if (!_storeContext.Categories.Any())
             {
-                var categoriesFile = await File.ReadAllTextAsync("../LinkDev.Talabat.Infrastructure.Persistence/Data/Seeds/categories.json");
+                var categoriesFile = await File.ReadAllTextAsync("../LinkDev.Talabat.Infrastructure.Persistence/_Data/Seeds/categories.json");
                 var Categories = JsonSerializer.Deserialize<List<ProductCategory>>(categoriesFile);
                 if (Categories?.Count() > 0)
                 {
@@ -34,11 +35,21 @@ namespace LinkDev.Talabat.Infrastructure.Persistence.Data
             }
             if (!_storeContext.Products.Any())
             {
-                var ProductsFile = await File.ReadAllTextAsync("../LinkDev.Talabat.Infrastructure.Persistence/Data/Seeds/products.json");
+                var ProductsFile = await File.ReadAllTextAsync("../LinkDev.Talabat.Infrastructure.Persistence/_Data/Seeds/products.json");
                 var Products = JsonSerializer.Deserialize<List<Product>>(ProductsFile);
                 if (Products?.Count() > 0)
                 {
                     await _storeContext.Products.AddRangeAsync(Products);
+                    await _storeContext.SaveChangesAsync();
+                }
+            }
+            if (!_storeContext.DeliveryMethods.Any())
+            {
+                var deliveryFile = await File.ReadAllTextAsync("../LinkDev.Talabat.Infrastructure.Persistence/_Data/Seeds/delivery.json");
+                var deliveries = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryFile);
+                if (deliveries?.Count() > 0)
+                {
+                    await _storeContext.DeliveryMethods.AddRangeAsync(deliveries);
                     await _storeContext.SaveChangesAsync();
                 }
             }

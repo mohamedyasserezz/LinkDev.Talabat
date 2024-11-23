@@ -1,0 +1,107 @@
+[
+    {
+        "Id": 0,
+        "ShortName": "Standard",
+        "Description": "Standard delivery within 5-7 business days",
+        "Cost": 5.99,
+        "DeliveryTime": "5-7 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "Express",
+        "Description": "Express delivery within 2-3 business days",
+        "Cost": 12.99,
+        "DeliveryTime": "2-3 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "NextDay",
+        "Description": "Next day delivery",
+        "Cost": 19.99,
+        "DeliveryTime": "1 business day"
+    },
+    {
+        "Id": 0,
+        "ShortName": "SameDay",
+        "Description": "Same day delivery for orders placed before 12 PM",
+        "Cost": 24.99,
+        "DeliveryTime": "Same day"
+    },
+    {
+        "Id": 0,
+        "ShortName": "InternationalStandard",
+        "Description": "International standard delivery within 10-14 business days",
+        "Cost": 15.99,
+        "DeliveryTime": "10-14 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "InternationalExpress",
+        "Description": "International express delivery within 3-5 business days",
+        "Cost": 35.99,
+        "DeliveryTime": "3-5 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "InStorePickup",
+        "Description": "Pickup at your nearest store location",
+        "Cost": 0.00,
+        "DeliveryTime": "Same day"
+    },
+    {
+        "Id": 0,
+        "ShortName": "LockerPickup",
+        "Description": "Pickup at a nearby locker location",
+        "Cost": 3.99,
+        "DeliveryTime": "2-3 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "WeekendDelivery",
+        "Description": "Delivery on weekends",
+        "Cost": 9.99,
+        "DeliveryTime": "1-2 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "EcoFriendly",
+        "Description": "Environmentally friendly, slower delivery",
+        "Cost": 4.99,
+        "DeliveryTime": "7-10 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "PrimeDelivery",
+        "Description": "Free delivery for Prime members within 2 days",
+        "Cost": 0.00,
+        "DeliveryTime": "2 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "OvernightExpress",
+        "Description": "Overnight delivery",
+        "Cost": 29.99,
+        "DeliveryTime": "Overnight"
+    },
+    {
+        "Id": 0,
+        "ShortName": "Freight",
+        "Description": "Heavy item delivery within 7-14 business days",
+        "Cost": 49.99,
+        "DeliveryTime": "7-14 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "WhiteGlove",
+        "Description": "White glove service for high-value items",
+        "Cost": 99.99,
+        "DeliveryTime": "3-5 business days"
+    },
+    {
+        "Id": 0,
+        "ShortName": "DroneDelivery",
+        "Description": "Fast drone delivery in select areas",
+        "Cost": 14.99,
+        "DeliveryTime": "1-2 hours"
+    }
+]
