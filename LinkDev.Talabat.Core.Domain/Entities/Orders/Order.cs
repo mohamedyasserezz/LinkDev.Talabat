@@ -5,7 +5,7 @@ namespace LinkDev.Talabat.Core.Domain.Entities.Orders
     public class Order : BaseAuditableEntity<int>
     {
         public required string BuyerEmail { get; set; }
-        public DateTime dateDate { get; set; } = DateTime.UtcNow;
+        public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public OrderStatus Status { get; set; }
         public required Address ShippingAddress { get; set; }
         public int? DeliveryMethodId { get; set; }
