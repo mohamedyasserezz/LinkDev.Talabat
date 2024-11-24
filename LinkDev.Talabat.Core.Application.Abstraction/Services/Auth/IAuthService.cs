@@ -1,4 +1,5 @@
 ﻿using LinkDev.Talabat.Core.Application.Abstraction.Models.Auth;
+using System.Security.Claims;
 
 namespace LinkDev.Talabat.Core.Application.Abstraction.Services.Auth
 {
@@ -6,5 +7,7 @@ namespace LinkDev.Talabat.Core.Application.Abstraction.Services.Auth
     {
         Task<UserDto> LoginAsync(LoginDto loginDto);
         Task<UserDto> RegisterAsync(RegisterDto registerDto);
+
+        Task<UserDto> GetCurrentUserAsync(ClaimsPrincipal claimsPrincipal);
     }
 }

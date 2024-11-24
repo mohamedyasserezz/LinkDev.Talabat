@@ -17,6 +17,9 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
         SignInManager<ApplicationUser> signInManager) : IAuthService
     {
         private readonly JwtSettings _jwtSettings = jwtSettings.Value;
+
+       
+
         public async Task<UserDto> LoginAsync(LoginDto loginDto)
         {
             var user = await userManager.FindByEmailAsync(loginDto.Email);
@@ -64,7 +67,20 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
             };
             return response;
         }
+        public async Task<UserDto> GetCurrentUserAsync(ClaimsPrincipal claimsPrincipal)
+        {
+            var email = claimsPrincipal.FindFirstValue(ClaimTypes.Email);
 
+            var user = await userManager.FindByEmailAsync(email);
+
+            return new UserDto()
+            {
+                DisplayName = user.DisplayName,
+                Email = email,
+                Id = user.Id,
+                Token = await GenerateTokenAsync(user)
+            };
+        }
         private async Task<string> GenerateTokenAsync(ApplicationUser user)
         {
             var userClaims = await userManager.GetClaimsAsync(user);

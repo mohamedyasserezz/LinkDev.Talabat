@@ -20,5 +20,13 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Account
             var result = await serviceManager.AuthService.RegisterAsync(model);
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var result = await serviceManager.AuthService.GetCurrentUserAsync(User);
+            return Ok(result);
+        }
     }
 }
