@@ -5,9 +5,14 @@ using System.Text.Json;
 
 namespace LinkDev.Talabat.Infrastructure.Basket_Repository
 {
-    internal class BasketRepository(IConnectionMultiplexer redis) : IBasketRepository
+    internal class BasketRepository : IBasketRepository
     {
-        private readonly IDatabase _database = redis.GetDatabase();
+        public BasketRepository(/*IConnectionMultiplexer redis*/)
+        {
+            //_database = redis.GetDatabase();
+        }
+
+        private readonly IDatabase _database;
 
         public async Task<CustomerBasket?> GetAsync(string id)
         {
