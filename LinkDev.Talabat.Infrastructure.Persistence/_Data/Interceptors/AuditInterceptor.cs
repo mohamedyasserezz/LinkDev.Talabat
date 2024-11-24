@@ -3,11 +3,11 @@ using LinkDev.Talabat.Core.Domain.Common;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence.Data.Interceptors;
-internal class CustomSavaChangesInterceptor : SaveChangesInterceptor
+internal class AuditInterceptor : SaveChangesInterceptor
 {
     private readonly ILoggedInUserService _loggedInUserService;
 
-    public CustomSavaChangesInterceptor(ILoggedInUserService loggedInUserService)
+    public AuditInterceptor(ILoggedInUserService loggedInUserService)
     {
         _loggedInUserService = loggedInUserService;
     }
@@ -30,8 +30,9 @@ internal class CustomSavaChangesInterceptor : SaveChangesInterceptor
     {
         if (dbContext == null)
             return;
-        foreach (var entry in dbContext.ChangeTracker.Entries<BaseAuditableEntity<int>>().
-               Where(entry => entry.State is EntityState.Added or EntityState.Modified))
+        var entries = dbContext.ChangeTracker.Entries<IBaseAuditableEntity>().
+               Where(entry => entry.State is EntityState.Added or EntityState.Modified);
+        foreach (var entry in entries)
         {
             if (entry.State is EntityState.Added)
             {

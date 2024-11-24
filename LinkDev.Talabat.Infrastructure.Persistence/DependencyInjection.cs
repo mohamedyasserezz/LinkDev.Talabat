@@ -1,11 +1,8 @@
 ﻿using LinkDev.Talabat.Core.Domain.Contract.Persistance;
 using LinkDev.Talabat.Core.Domain.Contract.Persistance.DbInitializer;
-using LinkDev.Talabat.Infrastructure.Persistence.Identity;
+using LinkDev.Talabat.Core.Domain.Entities.Identity;
 using LinkDev.Talabat.Infrastructure.Persistence.Data.Interceptors;
 using LinkDev.Talabat.Infrastructure.Persistence.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using LinkDev.Talabat.Core.Domain.Entities.Identity;
 
 namespace LinkDev.Talabat.Infrastructure.Persistence;
 
@@ -15,11 +12,14 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         #region StoreContext
-        services.AddDbContext<StoreDbContext>(optionsBuilder =>
+
+        services.AddScoped(typeof(AuditInterceptor));
+        services.AddDbContext<StoreDbContext>((serviceProvider, optionsBuilder) =>
         {
             optionsBuilder
             .UseSqlServer(configuration.GetConnectionString("StoreContext"))
-            .UseLazyLoadingProxies();
+            .UseLazyLoadingProxies()
+            .AddInterceptors(serviceProvider.GetRequiredService<AuditInterceptor>());
         });
         services.AddScoped<IStoreDbInitializer, StoreDbInitializer>();
 
