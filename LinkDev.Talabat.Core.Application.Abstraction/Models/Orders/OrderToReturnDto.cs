@@ -9,7 +9,7 @@ namespace LinkDev.Talabat.Core.Application.Abstraction.Models.Orders
         public required string BuyerEmail { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public required string Status { get; set; }
-        public required AddressDto ShippingAddress { get; set; }
+        public AddressDto ShippingAddress { get; set; } 
         public int? DeliveryMethodId { get; set; }
         public virtual string? DeliveryMethod { get; set; }
         public virtual required ICollection<OrderItemDto> Items { get; set; }

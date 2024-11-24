@@ -22,7 +22,9 @@ public static class DependencyInjection
             .UseLazyLoadingProxies();
         });
         services.AddScoped<IStoreDbInitializer, StoreDbInitializer>();
-        services.AddScoped(typeof(ISaveChangesInterceptor), typeof(CustomSavaChangesInterceptor)); 
+
+        //services.AddScoped(typeof(ISaveChangesInterceptor), typeof(CustomSavaChangesInterceptor)); 
+
         #endregion
 
         #region IdentityDbContext

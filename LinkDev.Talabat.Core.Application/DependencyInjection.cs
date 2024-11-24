@@ -36,12 +36,12 @@ namespace LinkDev.Talabat.Core.Application
                 //var configurations = serviceProvider.GetRequiredService<IConfiguration>();
 
                 //return () => new BasketService(BasketRepository, mapper, configurations);
-                return () => serviceProvider.GetService<IBasketService>();
+                return () => serviceProvider.GetRequiredService<IBasketService>();
             });
             services.AddScoped(typeof(IOrderService), typeof(OrderService));
             services.AddScoped(typeof(Func<IOrderService>), (serviceProvider) =>
             {
-                return () => serviceProvider.GetService(typeof(IOrderService));
+                return () => serviceProvider.GetRequiredService<IOrderService>();
             });
                 return services;
         }
