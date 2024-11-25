@@ -20,6 +20,10 @@ namespace LinkDev.Talabat.APIs
             // Add services to the container.
             builder.Services.
                 AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                })
                 .ConfigureApiBehaviorOptions(opthions =>
                 {
                     opthions.SuppressModelStateInvalidFilter = false;
