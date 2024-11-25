@@ -50,6 +50,9 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
 
         public async Task<UserDto> RegisterAsync(RegisterDto registerDto)
         {
+            //if (EmailExists(registerDto.Email).Result) throw new BadRequestException("this email is already exist");
+
+
             var user = new ApplicationUser
             {
                 DisplayName = registerDto.DisplayName,
@@ -59,7 +62,7 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
             };
             var result = await userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded)
-                throw new ValidationException("") { Errors = result.Errors.Select(E => E.Description) };
+                throw new ValidationException("") { Errors = result.Errors.Select(E => E.Description).ToArray() };
 
             var response = new UserDto()
             {
@@ -149,6 +152,12 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
 
             return addressDto;
 
+        }
+
+        public async Task<bool> EmailExists(string email)
+        {
+
+            return await userManager.FindByEmailAsync(email) is not null;
         }
     }
 }
