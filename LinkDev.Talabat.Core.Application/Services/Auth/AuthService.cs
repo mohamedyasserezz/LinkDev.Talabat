@@ -22,7 +22,7 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
     {
         private readonly JwtSettings _jwtSettings = jwtSettings.Value;
 
-       
+
 
         public async Task<UserDto> LoginAsync(LoginDto loginDto)
         {
@@ -121,7 +121,7 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
             return new JwtSecurityTokenHandler().WriteToken(tokenObj);
         }
 
-        public async Task<AddressDto> GetUserAddressAsync(ClaimsPrincipal claimsPrincipal)
+        public async Task<AddressDto?> GetUserAddressAsync(ClaimsPrincipal claimsPrincipal)
         {
 
             var user = await userManager.FindUserWithAddress(claimsPrincipal);
@@ -129,6 +129,26 @@ namespace LinkDev.Talabat.Core.Application.Services.Auth
             var address = mapper.Map<AddressDto>(user!.Address);
 
             return address;
+        }
+
+        public async Task<AddressDto?> UpdateUserAddressAsync(ClaimsPrincipal claim, AddressDto addressDto)
+        {
+            var user = await userManager.FindUserWithAddress(claim);
+
+            var address = mapper.Map<Address>(addressDto);
+            if (user?.Address is not null)
+            {
+                address.Id = user.Address.Id;
+            }
+
+            user.Address = address;
+
+            var result = await userManager.UpdateAsync(user);
+
+            if (!result.Succeeded) throw new BadRequestException(result.Errors.Select(error => error.Description).Aggregate((X, Y) => $"{X} {Y}"));
+
+            return addressDto;
+
         }
     }
 }
