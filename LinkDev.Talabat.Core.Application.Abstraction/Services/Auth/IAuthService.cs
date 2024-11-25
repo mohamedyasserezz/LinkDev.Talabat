@@ -1,4 +1,5 @@
 ﻿using LinkDev.Talabat.Core.Application.Abstraction.Models.Auth;
+using LinkDev.Talabat.Core.Application.Abstraction.Models.Common;
 using System.Security.Claims;
 
 namespace LinkDev.Talabat.Core.Application.Abstraction.Services.Auth
@@ -9,5 +10,6 @@ namespace LinkDev.Talabat.Core.Application.Abstraction.Services.Auth
         Task<UserDto> RegisterAsync(RegisterDto registerDto);
 
         Task<UserDto> GetCurrentUserAsync(ClaimsPrincipal claimsPrincipal);
+        Task<AddressDto> GetUserAddressAsync(ClaimsPrincipal claimsPrincipal);
     }
 }
